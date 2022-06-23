@@ -34,7 +34,7 @@ class UserController {
                         const transporter = nodemailer.createTransport({
                             service: 'gmail',
                             auth: {
-                                user: 'bacanoveldulu@gmail.com',
+                                user: 'infokuliah21@gmail.com',
                                 pass: 'vqihkuctcutxjoyc'
                             }
                         });
