@@ -25,10 +25,9 @@
     "url": "https://github.com/bacanovel/bacanovel/issues"
   },
   "homepage": "https://github.com/bacanovel/bacanovel#readme",
-
   "description": "",
   "devDependencies": {
+    "nodemon": "^2.0.17",
     "sequelize-cli": "^6.4.1"
-
   }
 }

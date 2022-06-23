@@ -4,12 +4,14 @@
 
 <body style="text-align:center">
     <h1 style="margin: 1cm;">NOVELS</h1>
+    <form action="/novels" method="get">
     <button type="button" class="btn" style="background-color: #B25068; margin: 1cm;" ><a style="color: white;" href="/novels/add">Add Novel</a></button>
     <div style="margin-bottom: 1cm;">
-
-        <input type="search"  name="search" placeholder="search..." class=" form-control-lg" style="width: 1000px; ">
+        
+        <input type="text"  name="search" placeholder="search..." class=" form-control-lg" style="width: 1000px; ">
         <button type="submit" class="btn" style="width: auto;">search</button>
     </div>
+</form>
     <table class="table table-striped">
         <thead>
             <tr>

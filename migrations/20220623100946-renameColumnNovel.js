@@ -18,5 +18,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+     return queryInterface.renameColumn('Novels', 'imageURL', 'imageUrl');
+
   }
 };
