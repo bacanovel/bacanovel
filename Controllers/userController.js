@@ -14,14 +14,12 @@ class UserController {
         res.render('register', { errors })
     }
     static postRegister(req, res) {
-        console.log(req.body);
         const { email, password, dateOfBirth, firstName, lastName, gender } = req.body
         User.create({
             email: email,
             password: password
         })
             .then(data => {
-                res.send(data);
                 return UserIdentity.create({
                     firstName,
                     lastName,
@@ -30,17 +28,16 @@ class UserController {
                     UserId: data.id
                 })
                     .then(data2 => {
-                        // console.log(email, 66666)
                         const transporter = nodemailer.createTransport({
                             service: 'gmail',
                             auth: {
-                                user: 'infokuliah21@gmail.com',
-                                pass: 'vqihkuctcutxjoyc'
+                                user: 'satyaaamanda@gmail.com',
+                                pass: 'pbnemieskwwkdigs'
                             }
                         });
 
                         const mailOptions = {
-                            from: 'bacanoveldulu@gmail.com',
+                            from: 'satyaaamanda@gmail.com',
                             to: email,
                             subject: 'Register',
                             text: 'Register success!'
@@ -50,25 +47,21 @@ class UserController {
                             if (error) {
                                 console.log(error);
                             } else {
-                                console.log('Email sent: ' + info.response);
+                                console.log('Email sent');
                             }
                         });
                         res.redirect('/login')
                     })
             })
             .catch(err => {
+                console.log(err)
                 let result = []
                 if (err.name == "SequelizeValidationError") {
                     err.errors.forEach(x => {
                         result.push(x.message)
                     })
                     return res.redirect(`/register?errors=${result}`)
-                } else {
-                    console.log(err)
-                    res.send(err)
-                    return res.redirect(`/register?errors=${result}`)
                 }
-
             })
     }
 
@@ -84,10 +77,12 @@ class UserController {
                     const isValidPassword = bcrypt.compareSync(password, user.password)
                     if (isValidPassword) {
                         // Case saat berhasil login
+                        // console.log(req.session.iduser)
                         req.session.iduser = user.id //set session 
                         req.session.roleuser = user.role //set role
-                        res.redirect('/home')
+                        res.redirect('/novels')
                     } else {
+                        // console.log(err)
                         let errors = 'Invalid username/password'
                         return res.redirect(`/login?errors=${errors}`)
 
@@ -101,6 +96,7 @@ class UserController {
             .catch(err => {
                 console.log(err);
                 res.send(err)
+
             })
     }
     static logOut(req, res) {
