@@ -1,4 +1,5 @@
 
+
 const { Novel } = require('../models')
 const formatDate = require('../Helper/helper')
 
@@ -7,11 +8,16 @@ class novelController {
         let id = req.session.iduser
         res.render("novelList", { id });
     }
-    static novelList(req, res) {
-        Novel.findAll()
-            .then(data => {
-                res.render('novelList', { data, formatDate })
-            })
+    static novelList(req, res){
+        const {search} = req.query
+        // console.log(search)
+        Novel.List(search)
+        .then(data =>{
+            res.render('novelList' ,{ data , formatDate})
+        })
+        .catch(err =>{
+            res.send(err)
+        })
     }
 
     static getaddNovel(req, res) {
@@ -77,8 +83,11 @@ class novelController {
                 console.log(err)
                 res.send(err)
             })
+
     }
 
 }
 
+
 module.exports = novelController
+

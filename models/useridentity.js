@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserIdentity.belongsTo(models.User, { foreignKey: "UserId" })
     }
+
+    get groupName(){
+      return `${this.firstName} ${this.lastName}`
+    }
   }
   UserIdentity.init({
     firstName: {

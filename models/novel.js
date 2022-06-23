@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { Op } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Novel extends Model {
     /**
@@ -14,7 +15,34 @@ module.exports = (sequelize, DataTypes) => {
       Novel.belongsToMany(models.User, { through: "Subscribes" })
     }
 
-   
+    static List(search) {
+
+      if (search) {
+        console.log(search)
+
+        const options = {
+          where: {
+            [Op.or]: [
+              {
+                title: {
+                  [Op.iLike]: `%${search}%`
+                }
+              },
+              {
+                authorName: {
+                  [Op.iLike]: `%${search}%`
+                }
+              }
+            ]
+          }
+        }
+        return Novel.findAll(options)
+      } else {
+        return Novel.findAll()
+
+      }
+    }
+
   }
   Novel.init({
     title: {
@@ -29,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    imageUrl: {
+    imageURL: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {

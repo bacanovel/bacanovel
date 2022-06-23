@@ -21,9 +21,7 @@ app.use(session({
 }))
 app.use('/', router)
 
-// app.get('/novels', novelController.readList)
-// app.get('/novels/add', novelController.addForm)
-// app.post('/novels/add', novelController.addNovel)
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
