@@ -1,3 +1,4 @@
+
 const { Novel } = require('../models')
 const formatDate = require('../Helper/helper')
 
@@ -71,4 +72,6 @@ class Controller{
 
 }
 
-module.exports = Controller
+
+}
+module.exports = novelController

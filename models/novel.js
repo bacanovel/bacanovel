@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    imageURL: {
+    imageUrl: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
