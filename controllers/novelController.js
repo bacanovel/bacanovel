@@ -8,16 +8,16 @@ class novelController {
         let id = req.session.iduser
         res.render("novelList", { id });
     }
-    static novelList(req, res){
-        const {search} = req.query
+    static novelList(req, res) {
+        const { search } = req.query
         // console.log(search)
         Novel.List(search)
-        .then(data =>{
-            res.render('novelList' ,{ data , formatDate})
-        })
-        .catch(err =>{
-            res.send(err)
-        })
+            .then(data => {
+                res.render('novelList', { data, formatDate })
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
 
     static getaddNovel(req, res) {
@@ -25,12 +25,13 @@ class novelController {
     }
 
     static postaddNovel(req, res) {
-        const { title, authorName, imageURL, description } = req.body
+        const { title, authorName, imageUrl, description } = req.body
+        console.log(req.body)
         let newdataId;
         Novel.findAll()
             .then(data => {
-                newdataId = data.length
-                return Novel.create({ title, authorName, imageURL, description })
+                newdataId = data.length + 1
+                return Novel.create({ title, authorName, imageUrl, description })
             })
             .then(data => {
                 // console.log(newdataId)
@@ -40,6 +41,7 @@ class novelController {
     static novelDetail(req, res) {
         const id = +req.params.id
         const options = { where: id }
+        // console.log(req.session)
         if (!req.session.iduser) {
             res.redirect('/login')
         } else {
