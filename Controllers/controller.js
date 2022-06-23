@@ -1,8 +1,8 @@
 class Controller{
 
 
-    static landingPage(req, res){
-        res.render('home')
+    static home(req, res) {
+        res.render('home');
     }
 }
 

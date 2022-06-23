@@ -3,14 +3,12 @@ const userController = require('./controllers/userController')
 const express = require('express')
 const app = express()
 const port = 3000
-
+const router = require('./Routes/router')
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 
-app.get('/', userController.home)
-app.get('/login', userController.loginForm)
-app.get('/register', userController.registerForm)
-app.post('/register', userController.postRegister)
+app.use('/', router)
+
 
 
 app.listen(port, () => {
