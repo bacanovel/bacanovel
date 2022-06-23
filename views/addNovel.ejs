@@ -25,7 +25,11 @@
         <textarea class="form-control"  name="description" id="" rows="3"></textarea>
       </div>
 
-
+      <%if(errors){%>
+        <% errors.split(',').forEach(el=>{ %>
+            <p style="color: red;"><strong><%= el %></strong></p>
+        <%})%>
+    <%}%>
     </form>
 
 

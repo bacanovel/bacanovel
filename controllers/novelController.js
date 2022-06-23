@@ -24,7 +24,9 @@ class novelController {
     }
 
     static getaddNovel(req, res) {
-        res.render('addNovel')
+        const { errors } = req.query
+
+        res.render('addNovel', {errors})
     }
 
     static postaddNovel(req, res) {
@@ -38,6 +40,14 @@ class novelController {
             .then(data => {
                 // console.log(newdataId)
                 res.redirect(`/novels/${newdataId}/detail`)
+            })
+            .catch(err =>{
+                if (err.name == 'SequelizeValidationError') {
+                    err = err.errors.map(el => {
+                        return el.message
+                    })
+                    res.redirect(`/novels/add?errors=${err}`)
+                }
             })
     }
     static novelDetail(req, res) {

@@ -9,15 +9,15 @@
 <body>
     <div>
         <div>
-          <% if(errors){ %>
-            <pre style="color: white ;"><%=errors%></pre>
-            <% } %>
-              <h2>Login</h2>
-              <div id="style2">
-                <form action="/login" method="post">
-                  <input name="email" type="email" placeholder="E-mail" />
-                  <input name="password" type="password" placeholder="Password" />
-                  <input value="Log in" type="submit" />
+          <h2>Login</h2>
+          <div id="style2">
+            <form action="/login" method="post">
+              <input name="email" type="email" placeholder="E-mail" />
+              <input name="password" type="password" placeholder="Password" />
+              <input value="Log in" type="submit" />
+              <% if(errors){ %>
+                <pre style="color: rgb(243, 1, 1) ;"><%=errors%></pre>
+                <% } %>
                 </form>
               </div>
               <br />
