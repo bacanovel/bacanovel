@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Novel.belongsToMany(models.User, { through: "Subscribes" })
     }
+
+   
   }
   Novel.init({
     title: {

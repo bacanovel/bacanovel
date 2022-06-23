@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./Partials/head', {title: 'Form Report'}) %>
-<h1>list Novels</h1>
-<body>
-    <label for="imageUrl"></label>
-        <img src="<%= data.imageUrl  %> "alt="">
-    <table border="1">
-        <thead>
-            <th> Title</th>
-            <th> Image Url</th>
-            <th> Description</th>
-            <th> authorName</th>
-            <th> action</th>
-        </thead>
-    <tbody>
-        <% data.forEach(e=> {%>
-        <tr>
-     <td><%= e.title %></td> 
-    <td><img src="<%= e.imageUrl %> " alt=""> </td>
-     <td><%= e.description %></td> 
-     <td><%= e.authorName %></td> 
-     <a href="/novels/detail"><td><button type="submit">Subscribe</button></td></a>
-    <%}) %> 
-</tr>   
-</table>
-    </tbody>
+
+    <%- include('./Partials/head', {title: 'Novel Details'}) %>
+
+<body style="text-align: center;">
+    <h1><%= data.title%></h1>
+    <p>by: <%= data.authorName%></p>
+    <p>Published at: <%=formatDate(data.createdAt)%></p>
+    <img src="<%=data.imageURL%>" alt="img">
+    <p><%=data.description%></p>
+    <button type="submit" class="btn"style="color: white; background-color: #E7AB79; margin: 1cm;">Subscribe</button>
+    <a type="button"class="btn" href="/novels/<%=data.id%>/detail/edit" style="color: white; background-color: #B25068; margin: 1cm;">Edit</a>
+
+
+    
+
 </body>
 </html>
