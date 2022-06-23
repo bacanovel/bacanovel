@@ -9,9 +9,9 @@
     <p>Published at: <%=formatDate(data.createdAt)%></p>
     <img src="<%=data.imageURL%>" alt="img">
     <p><%=data.description%></p>
-    <button type="submit" class="btn"style="color: white; background-color: #E7AB79; margin: 1cm;">Subscribe</button>
+    <%if(role === 1){%>
     <a type="button"class="btn" href="/novels/<%=data.id%>/detail/edit" style="color: white; background-color: #B25068; margin: 1cm;">Edit</a>
-
+    <%}%>
 
     
 

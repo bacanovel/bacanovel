@@ -5,9 +5,10 @@
 <body style="text-align:center">
     <h1 style="margin: 1cm;">NOVELS</h1>
     <form action="/novels" method="get">
+        <%if(role === 1 ){%>
     <button type="button" class="btn" style="background-color: #B25068; margin: 1cm;" ><a style="color: white;" href="/novels/add">Add Novel</a></button>
     <div style="margin-bottom: 1cm;">
-        
+        <%}%>
         <input type="text"  name="search" placeholder="search..." class=" form-control-lg" style="width: 1000px; ">
         <button type="submit" class="btn" style="width: auto;">search</button>
     </div>
@@ -29,6 +30,10 @@
                     <td><%=el.authorName%></td>
                     <td><%=formatDate(el.createdAt)%></td>
                     <td> 
+                        <%if(role === 1){%>
+                        <a style="color: white; background-color: #B25068; margin: 1cm;" href="/novels/<%= el.id%>/delete" type="button" class="btn" >Delete</a>
+
+                            <%}%>
                         <a style="color: white; background-color: #E7AB79; margin: 1cm;" href="/novels/<%= el.id%>/detail" type="button" class="btn" >Detail</a>
                     </td>
                     </tr>

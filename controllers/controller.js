@@ -10,11 +10,12 @@ class Controller{
 
     static profile(req, res){
         const id = +req.params.id
-
+        let userId = req.session.iduser
+console.log(userId)
         const options = {
             include:[User],
             where: {
-                UserId : 3
+                UserId : userId
             } 
         }
         UserIdentity.findOne(options)

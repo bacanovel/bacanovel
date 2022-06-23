@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-
+const Controller = require('../Controllers/controller')
 const novelRouter = require('./novelRoutes')
 const userController = require('../controllers/userController')
 
 router.use('/novels', novelRouter)
+router.get('/profile', Controller.profile)
 router.get('/register', userController.registerForm)
 router.post('/register', userController.postRegister)
 router.get('/login', userController.loginForm)

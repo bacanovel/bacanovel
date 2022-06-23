@@ -8,12 +8,15 @@ class novelController {
         let id = req.session.iduser
         res.render("novelList", { id });
     }
+
     static novelList(req, res){
         const {search} = req.query
+        let role = req.session.roleuser
+        console.log(role)
         // console.log(search)
         Novel.List(search)
         .then(data =>{
-            res.render('novelList' ,{ data , formatDate})
+            res.render('novelList' ,{ data , formatDate, role})
         })
         .catch(err =>{
             res.send(err)
@@ -39,13 +42,15 @@ class novelController {
     }
     static novelDetail(req, res) {
         const id = +req.params.id
+        let role = req.session.roleuser
+
         const options = { where: id }
         if (!req.session.iduser) {
             res.redirect('/login')
         } else {
             Novel.findOne(options)
                 .then(data => {
-                    res.render('readNovel', { data, formatDate })
+                    res.render('readNovel', { data, formatDate ,role})
                 })
                 .catch(err => {
                     res.send(err)
@@ -55,7 +60,7 @@ class novelController {
     static getEditNovel(req, res) {
         const id = +req.params.id
         const options = { where: id }
-        if (req.session.roleuser != 'admin') {
+        if (req.session.roleuser != 1) {
             res.send('unauthorize access')
             //alert error
         } else {
@@ -83,9 +88,25 @@ class novelController {
                 console.log(err)
                 res.send(err)
             })
-
     }
 
+    static deleteNovel(req,res){
+            let id = +req.params.id
+            Novel.destroy({
+                where: {
+                    id: id
+                }
+            })
+                .then(result => {
+                    res.redirect('/novels')
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.send(err)
+    
+                })
+        
+    }
 }
 
 
