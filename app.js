@@ -1,13 +1,19 @@
+
+const userController = require('./controllers/userController')
 const express = require('express')
 const app = express()
-const port = 3050
-const router = require('./Routes/router')
+const port = 3000
 
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }))
 
-app.use('/' , router)
+app.get('/', userController.home)
+app.get('/login', userController.loginForm)
+app.get('/register', userController.registerForm)
+app.post('/register', userController.postRegister)
 
-app.listen(port , ()=>{
-    console.log(`continuing to port ${port}`)
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
 })
+

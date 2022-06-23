@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Novel.belongsToMany(models.User, { through: "Subscribes" })
     }
   }
   Novel.init({
