@@ -15,7 +15,7 @@ class UserController {
     }
     static postRegister(req, res) {
         console.log(req.body);
-        const { email, password, dateOfBirth, firstName, lastName } = req.body
+        const { email, password, dateOfBirth, firstName, lastName, gender } = req.body
         User.create({
             email: email,
             password: password
@@ -26,6 +26,7 @@ class UserController {
                     firstName,
                     lastName,
                     dateOfBirth,
+                    gender,
                     UserId: data.id
                 })
                     .then(data2 => {
@@ -63,6 +64,7 @@ class UserController {
                     })
                     return res.redirect(`/register?errors=${result}`)
                 } else {
+                    console.log(err)
                     res.send(err)
                     return res.redirect(`/register?errors=${result}`)
                 }

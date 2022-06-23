@@ -2,7 +2,7 @@
 const fs = require('fs')
 
 module.exports = {
-   up (queryInterface, Sequelize) {
+  up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -13,19 +13,19 @@ module.exports = {
      * }], {});
     */
 
-     let useridentities = fs.readFileSync('./data/usersIdentity.json', 'utf8')
-     useridentities = JSON.parse(useridentities)
-     useridentities= useridentities.map(el =>{
-       el["createdAt"] = new Date()
-       el["updatedAt"] = new Date()
-       return el
-     })
-     console.log(useridentities)
-       return  queryInterface.bulkInsert('UserIdentities' , useridentities , {})
+    let useridentities = fs.readFileSync('./data/usersIdentity.json', 'utf8')
+    useridentities = JSON.parse(useridentities)
+    useridentities = useridentities.map(el => {
+      el["createdAt"] = new Date()
+      el["updatedAt"] = new Date()
+      return el
+    })
+    //  console.log(useridentities)
+    return queryInterface.bulkInsert('UserIdentities', useridentities, {})
 
   },
 
-   down (queryInterface, Sequelize) {
+  down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -33,6 +33,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-     return  queryInterface.bulkDelete('UserIdentities' , null , {})
+    return queryInterface.bulkDelete('UserIdentities', null, {})
   }
 };

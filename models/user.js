@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcryptjs')
 const {
   Model
 } = require('sequelize');
@@ -22,6 +23,22 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    hooks: {
+      beforeCreate(instance, options) {
+        let kata = ""
+        var salt = bcrypt.genSaltSync(8);
+        var hash = bcrypt.hashSync(instance.password, salt);
+        instance.password = hash
+        kata = instance.email.split("@")[1]
+        kata = kata.split(".")[0]
+        if (kata == 'admin' || kata == 'Admin') {
+          instance.role = 1
+        } else {
+          instance.role = 2
+        }
+      }
+
+    }
   });
   return User;
 };
