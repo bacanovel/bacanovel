@@ -15,10 +15,57 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Novel.init({
-    title: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    authorName: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Title Required"
+        },
+        notNull: {
+          msg: "Title required"
+        }
+      }
+    },
+    imageURL: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "URL Required"
+        },
+        notNull: {
+          msg: "URL required"
+        },
+        isUrl: {
+          msg: "needs to be a url"
+        }
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "description Required"
+        },
+        notNull: {
+          msg: "description required"
+        }
+      }
+    },
+    authorName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "AuthorName Required"
+        },
+        notNull: {
+          msg: "AuthorName required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Novel',
