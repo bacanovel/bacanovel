@@ -3,6 +3,8 @@
     <%- include('./Partials/head', {title: 'Form Report'}) %>
 <h1>list Novels</h1>
 <body>
+    <label for="imageUrl"></label>
+        <img src="<%= data.imageUrl  %> "alt="">
     <table border="1">
         <thead>
             <th> Title</th>
@@ -15,7 +17,7 @@
         <% data.forEach(e=> {%>
         <tr>
      <td><%= e.title %></td> 
-     <td><%= e.imageUrl %></td> 
+    <td><img src="<%= e.imageUrl %> " alt=""> </td>
      <td><%= e.description %></td> 
      <td><%= e.authorName %></td> 
      <a href="/novels/detail"><td><button type="submit">Subscribe</button></td></a>
