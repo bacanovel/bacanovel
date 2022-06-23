@@ -8,8 +8,6 @@
   "name": "bacanovel",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +22,8 @@
     "url": "https://github.com/bacanovel/bacanovel/issues"
   },
   "homepage": "https://github.com/bacanovel/bacanovel#readme",
-  "description": ""
-
+  "description": "",
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
 }
