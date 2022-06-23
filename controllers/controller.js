@@ -3,8 +3,9 @@ const formatDate = require('../Helper/helper')
 class Controller{
 
 
-    static home(req, res){
-        res.render('home')
+    static home(req, res) {
+        res.render('home');
+
     }
 
     static profile(req, res){
