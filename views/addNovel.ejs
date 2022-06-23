@@ -11,17 +11,12 @@
     <form action="/novels/add" method="post">
     <label for="title">title</label><br>
     <input type="text" name="title"><br>
-    <label for="pages">pages</label><br>
-    <input type="number" name="pages"><br>
+    <label for="imageUrl">imageUrl</label><br>
+    <input type="string" name="imageUrl"><br>
     <label for="description">description</label><br>
     <textarea name="description" cols="30" rows="10"></textarea><br>
-    <label>AuthorName</label><br>
-    <select name="AuthorId">
-        <option value="" selected>pilih author</option> 
-        <% data.forEach(e=> {%>
-            <option value="<%= e.id %>"><%= e.name %></option>
-        <%}) %> 
-    </select><br><br>
+    <label for="authorName">AuthorName</label><br>
+    <input type="string" name="authorName"><br>
     <button type="submit">Add Novel</button>
 </form>
 </body>
