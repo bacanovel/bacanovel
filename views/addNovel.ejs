@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Novel</h1>
+    <form action="/novels/add" method="post">
+    <label for="title">title</label><br>
+    <input type="text" name="title"><br>
+    <label for="pages">pages</label><br>
+    <input type="number" name="pages"><br>
+    <label for="description">description</label><br>
+    <textarea name="description" cols="30" rows="10"></textarea><br>
+    <label>AuthorName</label><br>
+    <select name="AuthorId">
+        <option value="" selected>pilih author</option> 
+        <% data.forEach(e=> {%>
+            <option value="<%= e.id %>"><%= e.name %></option>
+        <%}) %> 
+    </select><br><br>
+    <button type="submit">Add Novel</button>
+</form>
+</body>
+</html>
