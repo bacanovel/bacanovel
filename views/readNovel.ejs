@@ -6,8 +6,8 @@
     <table border="1">
         <thead>
             <th> Title</th>
-            <th> Pages</th>
-            <th> authorCode</th>
+            <th> Image Url</th>
+            <th> Description</th>
             <th> authorName</th>
             <th> action</th>
         </thead>
@@ -15,10 +15,10 @@
         <% data.forEach(e=> {%>
         <tr>
      <td><%= e.title %></td> 
-     <td><%= e.pages %></td> 
-     <td><%= e.authorCode %></td> 
-     <td><%= e.Author.name %></td> 
-     <a href="/novels/detail"><td><button type="submit">Read Detail</button></td></a>
+     <td><%= e.imageUrl %></td> 
+     <td><%= e.description %></td> 
+     <td><%= e.authorName %></td> 
+     <a href="/novels/detail"><td><button type="submit">Subscribe</button></td></a>
     <%}) %> 
 </tr>   
 </table>
